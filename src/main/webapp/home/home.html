@@ -10,9 +10,9 @@
 <body style="background-color: #EEEEEE;">
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <span style="color: white;"><i class="fas fa-bars mr-3 wbdv-field wbdv-hamburger"></i></span>
-    <a class="navbar-brand wbdv-label wbdv-course-manager" href="#">Course Manager</a>
+    <label for="newCourse" class="navbar-brand wbdv-label wbdv-course-manager" href="#">Course Manager</label>
     <form class="form-inline my-2 my-lg-0 w-100">
-        <input class="form-control mr-sm-2" style="width: 85%;" type="search" placeholder="New Course Title" aria-label="Search">
+        <input class="form-control mr-sm-2" style="width: 85%;" id="newCourse" placeholder="New Course Title">
         <button class="btn bg-transparent my-2 my-sm-0 align-right wbdv-button wbdv-add-course" type="submit">
             <span class="fa-stack">
                 <i class="fas fa-circle fa-stack-2x text-danger"></i>
@@ -22,16 +22,16 @@
     </form>
 </nav>
 <nav class="navbar navbar-expand-lg d-none d-lg-flex navbar-light bg-light">
-    <div class="collapse navbar-collapse container" id="headerBar">
+    <div class="collapse navbar-collapse container">
         <div class="navbar-nav mx-auto w-100 row font-weight-bold">
             <div class="nav-item col-5">
-                <a class="nav-link text-secondary wbdv-header wbdv-title" href="#">Title</a>
+                <a class="nav-link text-secondary wbdv-header wbdv-title" href="#">Title </a>
+            </div>
+            <div class="nav-item col-2 dropdown">
+                <a class="nav-link dropdown-toggle text-secondary wbdv-header wbdv-owner" href="#">Owned by </a>
             </div>
             <div class="nav-item col-2">
-                <a class="nav-link text-secondary wbdv-header wbdv-owner" href="#">Owned by</a>
-            </div>
-            <div class="nav-item col-2">
-                <a class="nav-link text-secondary wbdv-header wbdv-last-modified" href="#">Last modified</a>
+                <a class="nav-link text-secondary wbdv-header wbdv-last-modified" href="#">Last modified </a>
             </div>
             <div class="nav-item col-1">
                 <a class="nav-link text-secondary wbdv-button wbdv-grid-layout" href="#"><i class="fas fa-grip-horizontal"></i></a>
