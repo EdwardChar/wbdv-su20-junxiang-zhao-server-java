@@ -9,11 +9,11 @@
 </head>
 <body style="background-color: #EEEEEE;">
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <span style="color: white;"><i class="fas fa-bars mr-3"></i></span>
-    <a class="navbar-brand" href="#">Course Manager</a>
+    <span style="color: white;"><i class="fas fa-bars mr-3 wbdv-field wbdv-hamburger"></i></span>
+    <a class="navbar-brand wbdv-label wbdv-course-manager" href="#">Course Manager</a>
     <form class="form-inline my-2 my-lg-0 w-100">
-        <input class="form-control mr-sm-2" style="width: 85%;" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn bg-transparent my-2 my-sm-0 align-right" type="submit">
+        <input class="form-control mr-sm-2" style="width: 85%;" type="search" placeholder="New Course Title" aria-label="Search">
+        <button class="btn bg-transparent my-2 my-sm-0 align-right wbdv-button wbdv-add-course" type="submit">
             <span class="fa-stack">
                 <i class="fas fa-circle fa-stack-2x text-danger"></i>
                 <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
@@ -23,143 +23,156 @@
 </nav>
 <nav class="navbar navbar-expand-lg d-none d-lg-flex navbar-light bg-light">
     <div class="collapse navbar-collapse container" id="headerBar">
-        <div class="navbar-nav mr-auto w-100 row font-weight-bold">
+        <div class="navbar-nav mx-auto w-100 row font-weight-bold">
             <div class="nav-item col-5">
-                <a class="nav-link text-secondary" href="#">Title</a>
+                <a class="nav-link text-secondary wbdv-header wbdv-title" href="#">Title</a>
             </div>
             <div class="nav-item col-2">
-                <a class="nav-link text-secondary" href="#">Owned by</a>
+                <a class="nav-link text-secondary wbdv-header wbdv-owner" href="#">Owned by</a>
             </div>
             <div class="nav-item col-2">
-                <a class="nav-link text-secondary" href="#">Last modified</a>
+                <a class="nav-link text-secondary wbdv-header wbdv-last-modified" href="#">Last modified</a>
             </div>
             <div class="nav-item col-1">
-                <a class="nav-link text-secondary" href="#"><i class="fas fa-grip-horizontal"></i></a>
+                <a class="nav-link text-secondary wbdv-button wbdv-grid-layout" href="#"><i class="fas fa-grip-horizontal"></i></a>
             </div>
             <div class="nav-item col">
-                <a class="nav-link text-secondary" href="#"><i class="fas fa-sort-alpha-down"></i></a>
+                <a class="nav-link text-secondary wbdv-header wbdv-sort" href="#"><i class="fas fa-sort-alpha-down"></i></a>
             </div>
         </div>
     </div>
 </nav>
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-12" style="padding: 0px;">
-            <div class="my-2 font-weight-bold">Today</div>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-5">
-                            CS5500
-                        </div>
-                        <div class="col-2">
-                            me
-                        </div>
-                        <div class="col-1">
-                            6:00 PM
-                        </div>
-                        <div class="justify-content-end col">
-                            <button type="button" class="close" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-5">
-                            CS5600
-                        </div>
-                        <div class="col-2">
-                            me
-                        </div>
-                        <div class="col-1">
-                            6:00 PM
-                        </div>
-                        <div class="justify-content-end col">
-                            <button type="button" class="close" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    </div>
-                </li><li class="list-group-item">
-                <div class="row">
-                    <div class="col-5">
-                        CS5610
-                    </div>
-                    <div class="col-2">
-                        me
-                    </div>
-                    <div class="col-1">
-                        6:00 PM
-                    </div>
-                    <div class="justify-content-end col">
-                        <button type="button" class="close" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+    <div class="my-2 font-weight-bold">Today</div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <div class="row wbdv-row wbdv-course">
+                <div class="ml-3 wbdv-row wbdv-icon">
+                    <i class="fas fa-sticky-note"></i>
                 </div>
-            </li>
-            </ul>
-            <div class="my-2 font-weight-bold">Yesterday</div>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-5">
-                            CS5100
-                        </div>
-                        <div class="col-2">
-                            me
-                        </div>
-                        <div class="col-1">
-                            6:00 PM
-                        </div>
-                        <div class="justify-content-end col">
-                            <button type="button" class="close" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-5">
-                            CS5600
-                        </div>
-                        <div class="col-2">
-                            me
-                        </div>
-                        <div class="col-1">
-                            6:00 PM
-                        </div>
-                        <div class="justify-content-end col">
-                            <button type="button" class="close" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    </div>
-                </li><li class="list-group-item">
-                <div class="row">
-                    <div class="col-5">
-                        CS5500
-                    </div>
-                    <div class="col-2">
-                        me
-                    </div>
-                    <div class="col-1">
-                        6:00 PM
-                    </div>
-                    <div class="justify-content-end col">
-                        <button type="button" class="close" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                <div class="col-5 wbdv-row wbdv-title">
+                    CS5500
                 </div>
-            </li>
-            </ul>
+                <div class="col-2 wbdv-row wbdv-owner">
+                    me
+                </div>
+                <div class="col-1 wbdv-row wbdv-modified-date">
+                    6:00 PM
+                </div>
+                <div class="justify-content-end col">
+                    <button type="button" class="close wbdv-row wbdv-button wbdv-delete" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row wbdv-row wbdv-course">
+                <div class="ml-3 wbdv-row wbdv-icon">
+                    <i class="fas fa-sticky-note"></i>
+                </div>
+                <div class="col-5 wbdv-row wbdv-title">
+                    CS5600
+                </div>
+                <div class="col-2 wbdv-row wbdv-owner">
+                    me
+                </div>
+                <div class="col-1 wbdv-row wbdv-modified-date">
+                    6:00 PM
+                </div>
+                <div class="justify-content-end col">
+                    <button type="button" class="close wbdv-row wbdv-button wbdv-delete" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </li><li class="list-group-item">
+        <div class="row wbdv-row wbdv-course">
+            <div class="ml-3 wbdv-row wbdv-icon">
+                <i class="fas fa-sticky-note"></i>
+            </div>
+            <div class="col-5 wbdv-row wbdv-title">
+                CS5610
+            </div>
+            <div class="col-2 wbdv-row wbdv-owner">
+                me
+            </div>
+            <div class="col-1 wbdv-row wbdv-modified-date">
+                6:00 PM
+            </div>
+            <div class="justify-content-end col">
+                <button type="button" class="close wbdv-row wbdv-button wbdv-delete" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
         </div>
-
-    </div>
+    </li>
+    </ul>
+    <div class="my-2 font-weight-bold">Yesterday</div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <div class="row wbdv-row wbdv-course">
+                <div class="ml-3 wbdv-row wbdv-icon">
+                    <i class="fas fa-sticky-note"></i>
+                </div>
+                <div class="col-5 wbdv-row wbdv-title">
+                    CS5100
+                </div>
+                <div class="col-2 wbdv-row wbdv-owner">
+                    me
+                </div>
+                <div class="col-1 wbdv-row wbdv-modified-date">
+                    6:00 PM
+                </div>
+                <div class="justify-content-end col">
+                    <button type="button" class="close wbdv-row wbdv-button wbdv-delete" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="row wbdv-row wbdv-course">
+                <div class="ml-3 wbdv-row wbdv-icon">
+                    <i class="fas fa-sticky-note"></i>
+                </div>
+                <div class="col-5 wbdv-row wbdv-title">
+                    CS5600
+                </div>
+                <div class="col-2 wbdv-row wbdv-owner">
+                    me
+                </div>
+                <div class="col-1 wbdv-row wbdv-modified-date">
+                    6:00 PM
+                </div>
+                <div class="justify-content-end col">
+                    <button type="button" class="close wbdv-row wbdv-button wbdv-delete" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </li><li class="list-group-item">
+        <div class="row wbdv-row wbdv-course">
+            <div class="ml-3 wbdv-row wbdv-icon">
+                <i class="fas fa-sticky-note"></i>
+            </div>
+            <div class="col-5 wbdv-row wbdv-title">
+                CS5500
+            </div>
+            <div class="col-2 wbdv-row wbdv-owner">
+                me
+            </div>
+            <div class="col-1 wbdv-row wbdv-modified-date">
+                6:00 PM
+            </div>
+            <div class="justify-content-end col">
+                <button type="button" class="close wbdv-row wbdv-button wbdv-delete" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </li>
+    </ul>
 </div>
 </body>
 </html>
