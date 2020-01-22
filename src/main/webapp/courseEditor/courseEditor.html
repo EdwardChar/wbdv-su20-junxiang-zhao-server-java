@@ -3,8 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <title>Course Editor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="courseEditor.style.css">
+    <script src="https://kit.fontawesome.com/25bf838576.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button type="button" class="close navbar-brand" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <a class="navbar-brand" href="#">CS5610 - Web Dev</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link " href="#">Build</a>
+                <a class="nav-item nav-link" href="#">Pages</a>
+                <a class="nav-item nav-link" href="#">Theme</a>
+                <a class="nav-item nav-link" href="#">Store</a>
+                <a class="nav-item nav-link" href="#">Apps</a>
+                <a class="nav-item nav-link" href="#">Settings</a>
+            </div>
+        </div>
+    </nav>
+    <div class="row mainArea">
+        <div class="col-3 pl-4 pr-3 py-3 sideArea">
+            <div class="card text-white bg-secondary my-2">
+                <div class="card-body">
+                    Module 1 - jQuery
+                    <button type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="card text-white bg-secondary my-2">
+                <div class="card-body">
+                    Module 2 - React
+                    <button type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="card text-white bg-secondary my-2">
+                <div class="card-body">
+                    Module 2 - Redux
+                    <button type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col my-3">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-secondary">Topic 1</button>
+                <button type="button" class="btn btn-secondary">Topic 2</button>
+                <button type="button" class="btn btn-secondary">Topic 3</button>
+                <button type="button" class="btn btn-secondary">Topic 4</button>
+                <button type="button" class="btn btn-secondary"><i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
