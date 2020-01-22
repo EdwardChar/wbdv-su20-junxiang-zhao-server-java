@@ -20,3 +20,7 @@ html,body{
 .close{
     color: white;
 }
+
+.custom-select{
+    width: 15%;
+}
