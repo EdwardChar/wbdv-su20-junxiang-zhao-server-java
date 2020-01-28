@@ -4,7 +4,7 @@
     var $firstNameFld, $lastNameFld, $roleFld;
     var $userRowTemplate, $tbody;
     var userService = new AdminUserServiceClient();
-    var userList;
+    var $userList;
     var users = [];
     $(main);
 
@@ -18,9 +18,11 @@
         $lastNameFld = $("#lastNameFld");
         $roleFld = $("#roleFld");
         $userRowTemplate = $("#userRowTemplate");
-        $tbody = $("#tbody");
-        userList = $("#userList");
+        $tbody = $("tbody");
+        $userList = $tbody;
         $createBtn.click(createUser);
+        $editBtn.click(updateUser);
+        findAllUsers();
     }
 
     function createUser() {
@@ -37,47 +39,60 @@
         $lastNameFld.val("");
         $roleFld.val("");
         console.log(newUser);
-        users.push(newUser);
-        renderUsers();
+        userService.createUser(newUser).then(findAllUsers);
     }
 
-    function findAllUsers() {  }
+    function findAllUsers() {
+        userService.findAllUsers().then(renderUsers);
+    }
     function findUserById() {  }
-    function deleteUser(index) {    }
-    function selectUser() {  }
-    function updateUser() {  }
-    function renderUser(user) {  }
-    function renderUsers() {
-        userList.empty();
+    function deleteUser(index) {
+        userService.deleteUser(index).then(findAllUsers);
+    }
+    function selectUser() {
+        $usernameFld.val(user.username);
+        $passwordFld.val(user.password);
+        $firstNameFld.val(user.firstName);
+        $lastNameFld.val(user.lastName);
+        $roleFld.val(user.role);  }
+    function updateUser() {
+
+    }
+    function renderUser(user) {
+    }
+    function renderUsers(users) {
+        $userList.empty();
         for (let u in users){
             const user = users[u];
             let $deleteBtn = $("<i></i>");
             $deleteBtn.addClass("fa-2x fa fa-times wbdv-remove");
             $deleteBtn.click(() => {
-                deleteUser(u);
+                deleteUser(user._id);
             })
             let $editBtn = $("<i></i>");
             $editBtn.addClass("fa-2x fa fa-pencil wbdv-edit");
             $editBtn.click(() => {
-
+                renderUser(user);
             });
             let $btnArea = $("<span></span>");
             $btnArea.addClass("float-right");
             $btnArea.append($deleteBtn);
             $btnArea.append($editBtn);
-            let $usernameCell = $("<td>${user.username}</td>");
-            let $passwordCell = $("<td>${user.password}</td>");
-            let $firstNameCell = $("<td>${user.firstName}</td>");
-            let $lastNameCell = $("<td>${user.lastName}</td>");
-            let $roleCell = $("<td>${user.role}</td>");
+            let $usernameCell = $(`<td>${user.username}</td>`);
+            let $passwordCell = $(`<td>${user.password}</td>`);
+            let $firstNameCell = $(`<td>${user.firstName}</td>`);
+            let $lastNameCell = $(`<td>${user.lastName}</td>`);
+            let $roleCell = $(`<td>${user.role}</td>`);
+            let $btnCell = $("<td></td>")
+            $btnCell.append($btnArea);
             let $row = $("<tr></tr>");
             $row.append($usernameCell);
             $row.append($passwordCell);
             $row.append($firstNameCell);
             $row.append($lastNameCell);
             $row.append($roleCell);
-            $row.append($btnArea);
-            userList.append($row);
+            $row.append($btnCell);
+            $userList.append($row);
         }
     }
 })();
