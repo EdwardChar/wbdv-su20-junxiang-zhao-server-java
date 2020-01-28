@@ -1,7 +1,7 @@
 (function () {
     var $usernameFld, $passwordFld;
     var $removeBtn, $editBtn, $createBtn;
-    var $firstNameFld, $lastNameFld, $roleFld;
+    var $firstNameFld, $lastNameFld, $roleFld, $idFld;
     var $userRowTemplate, $tbody;
     var userService = new AdminUserServiceClient();
     var $userList;
@@ -17,6 +17,7 @@
         $firstNameFld = $("#firstNameFld");
         $lastNameFld = $("#lastNameFld");
         $roleFld = $("#roleFld");
+        $idFld = $("#idFld");
         $userRowTemplate = $("#userRowTemplate");
         $tbody = $("tbody");
         $userList = $tbody;
@@ -45,18 +46,35 @@
     function findAllUsers() {
         userService.findAllUsers().then(renderUsers);
     }
-    function findUserById() {  }
+    function findUserById() {
+        userService.findUserById().then(renderUser);
+    }
     function deleteUser(index) {
         userService.deleteUser(index).then(findAllUsers);
     }
-    function selectUser() {
+    function selectUser(user) {
         $usernameFld.val(user.username);
         $passwordFld.val(user.password);
         $firstNameFld.val(user.firstName);
         $lastNameFld.val(user.lastName);
-        $roleFld.val(user.role);  }
+        $roleFld.val(user.role);
+        $idFld.val(user._id);
+    }
     function updateUser() {
-
+        const user = {
+            username: $usernameFld.val(),
+            password: $passwordFld.val(),
+            firstName: $firstNameFld.val(),
+            lastName: $lastNameFld.val(),
+            role: $roleFld.val()
+        };
+        $usernameFld.val("");
+        $passwordFld.val("");
+        $firstNameFld.val("");
+        $lastNameFld.val("");
+        $roleFld.val("");
+        console.log(user);
+        userService.updateUser($idFld.val(),user).then(findAllUsers);
     }
     function renderUser(user) {
     }
@@ -72,7 +90,7 @@
             let $editBtn = $("<i></i>");
             $editBtn.addClass("fa-2x fa fa-pencil wbdv-edit");
             $editBtn.click(() => {
-                renderUser(user);
+                selectUser(user);
             });
             let $btnArea = $("<span></span>");
             $btnArea.addClass("float-right");
