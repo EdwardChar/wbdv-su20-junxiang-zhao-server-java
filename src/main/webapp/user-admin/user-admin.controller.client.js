@@ -4,7 +4,6 @@
     var $firstNameFld, $lastNameFld, $roleFld, $idFld;
     var $userRowTemplate, $tbody;
     var userService = new AdminUserServiceClient();
-    var $userList;
     var users = [];
     $(main);
 
@@ -19,8 +18,7 @@
         $roleFld = $("#roleFld");
         $idFld = $("#idFld");
         $userRowTemplate = $("#userRowTemplate");
-        $tbody = $("tbody");
-        $userList = $tbody;
+        $tbody = $("#userList");
         $createBtn.click(createUser);
         $editBtn.click(updateUser);
         findAllUsers();
@@ -46,8 +44,8 @@
     function findAllUsers() {
         userService.findAllUsers().then(renderUsers);
     }
-    function findUserById() {
-        userService.findUserById().then(renderUser);
+    function findUserById(id) {
+        userService.findUserById(id).then(selectUser);
     }
     function deleteUser(index) {
         userService.deleteUser(index).then(findAllUsers);
@@ -77,40 +75,26 @@
         userService.updateUser($idFld.val(),user).then(findAllUsers);
     }
     function renderUser(user) {
+        let $row = $userRowTemplate.clone();
+        $row.removeClass("wbdv-hidden");
+        $row.find(".wbdv-username").html(user.username);
+        $row.find(".wbdv-password").html(user.password);
+        $row.find(".wbdv-first-name").html(user.firstName);
+        $row.find(".wbdv-last-name").html(user.lastName);
+        $row.find(".wbdv-role").html(user.role);
+        $row.find(".wbdv-remove").click(() => {
+            deleteUser(user._id);
+        });
+        $row.find(".wbdv-edit").click(() => {
+            selectUser(user);
+        });
+        $tbody.append($row);
     }
     function renderUsers(users) {
-        $userList.empty();
+        $tbody.empty();
         for (let u in users){
             const user = users[u];
-            let $deleteBtn = $("<i></i>");
-            $deleteBtn.addClass("fa-2x fa fa-times wbdv-remove");
-            $deleteBtn.click(() => {
-                deleteUser(user._id);
-            })
-            let $editBtn = $("<i></i>");
-            $editBtn.addClass("fa-2x fa fa-pencil wbdv-edit");
-            $editBtn.click(() => {
-                selectUser(user);
-            });
-            let $btnArea = $("<span></span>");
-            $btnArea.addClass("float-right");
-            $btnArea.append($deleteBtn);
-            $btnArea.append($editBtn);
-            let $usernameCell = $(`<td>${user.username}</td>`);
-            let $passwordCell = $(`<td>${user.password}</td>`);
-            let $firstNameCell = $(`<td>${user.firstName}</td>`);
-            let $lastNameCell = $(`<td>${user.lastName}</td>`);
-            let $roleCell = $(`<td>${user.role}</td>`);
-            let $btnCell = $("<td></td>")
-            $btnCell.append($btnArea);
-            let $row = $("<tr></tr>");
-            $row.append($usernameCell);
-            $row.append($passwordCell);
-            $row.append($firstNameCell);
-            $row.append($lastNameCell);
-            $row.append($roleCell);
-            $row.append($btnCell);
-            $userList.append($row);
+            renderUser(user);
         }
     }
 })();
