@@ -1,55 +1,57 @@
 package com.example.demo.services;
 
+import com.example.demo.models.Topic;
+import com.example.demo.repositories.TopicRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.demo.models.Widget;
+import com.example.demo.repositories.WidgetRepository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Date;
+import java.util.*;
 
 @Service
 public class WidgetService {
 
-    private Map<String, Map<String, Widget>> widgetMap;
+    @Autowired
+    WidgetRepository widgetRepository;
 
-    public WidgetService() {
-        widgetMap = new HashMap<>();
+    @Autowired
+    TopicRepository topicRepository;
+
+    public Widget createWidget(Integer tid, Widget widget) {
+        Topic topic = topicRepository.findById(tid).get();
+        widget.setTopic(topic);
+        return widgetRepository.save(widget);
     }
 
-    public Widget createWidget(String tid, Widget widget) {
-        widget.setId(new Date().getTime() + "");
-        if(widgetMap.containsKey(tid))
-            widgetMap.get(tid).put(widget.getId(),widget);
-        else{
-            Map<String, Widget> map = new HashMap<>();
-            map.put(widget.getId(),widget);
-            widgetMap.put(tid, map);
+    public int updateWidget(Integer wid, Widget widget) {
+        Optional<Widget> opt = widgetRepository.findById(wid);
+        if (opt.isPresent()) {
+            widget.setTopic(opt.get().getTopic());
+            widgetRepository.save(widget);
+            return 1;
         }
-        return widget;
+        else
+            return 0;
     }
 
-    public Widget findWidgetById(String wid) {
-        for (Map<String, Widget> map : widgetMap.values()) {
-            if(map.containsKey(wid))
-            return map.get(wid);
-        }
-        return null;
+    public Widget findWidgetById(Integer wid) {
+        return widgetRepository.findById(wid).orElse(null);
     }
 
-    public int deleteWidget(String wid) {
-        for (Map<String, Widget> map : widgetMap.values()) {
-            if(map.containsKey(wid)) {
-                map.remove(wid);
-                return 1;
-            }
-        }
-        return 0;
+    public int deleteWidget(Integer wid) {
+        widgetRepository.deleteById(wid);
+        return 1;
     }
 
-    public List<Widget> findWidgetsForTopic(String tid) {
-        return new ArrayList<>(widgetMap.get(tid).values());
+    public List<Widget> findWidgetsForTopic(Integer topicId) {
+        Topic topic = topicRepository.findById(topicId).orElse(new Topic());
+        return topic.getWidgets();
+//        return widgetRepository.findWidgetsForTopic(topicId);
+    }
+
+    public List<Widget> findAllWidgets() {
+        return (List<Widget>) widgetRepository.findAllWidgets();
     }
 
 }
