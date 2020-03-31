@@ -47,7 +47,6 @@ public class WidgetService {
     public List<Widget> findWidgetsForTopic(Integer topicId) {
         Topic topic = topicRepository.findById(topicId).orElse(new Topic());
         return topic.getWidgets();
-//        return widgetRepository.findWidgetsForTopic(topicId);
     }
 
     public List<Widget> findAllWidgets() {
