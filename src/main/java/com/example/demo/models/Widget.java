@@ -17,7 +17,7 @@ public class Widget {
     private String type = "HEADING";
     private int ordering;
     private String text = "Sample Text";
-    private String url = "https://www.example.com";
+    private String url = "https://homepages.cae.wisc.edu/~ece533/images/fruits.png";
     private int size = 2;
     private int width;
     private int height;
