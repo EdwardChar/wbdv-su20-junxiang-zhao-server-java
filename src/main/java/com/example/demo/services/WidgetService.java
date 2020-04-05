@@ -40,8 +40,13 @@ public class WidgetService {
     }
 
     public int deleteWidget(Integer wid) {
-        widgetRepository.deleteById(wid);
-        return 1;
+        Optional<Widget> opt = widgetRepository.findById(wid);
+        if (opt.isPresent()) {
+            widgetRepository.deleteById(wid);
+            return 1;
+        }
+        else
+            return 0;
     }
 
     public List<Widget> findWidgetsForTopic(Integer topicId) {

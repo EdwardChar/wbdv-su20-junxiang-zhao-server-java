@@ -37,12 +37,17 @@ public class TopicService {
     }
 
     public int deleteTopic(Integer tid) {
-        List<Widget> widgets = topicRepository.findById(tid).orElse(new Topic()).getWidgets();
-        for(Widget w : widgets){
-            widgetRepository.deleteById(w.getId());
+        if (topicRepository.findById(tid).isPresent()) {
+            List<Widget> widgets = topicRepository.findById(tid).orElse(new Topic()).getWidgets();
+            for(Widget w : widgets){
+                widgetRepository.deleteById(w.getId());
+            }
+            topicRepository.deleteById(tid);
+            return 1;
         }
-        topicRepository.deleteById(tid);
-        return 1;
+        else
+            return 0;
+
     }
 
     public List<Topic> findTopicsForLesson(String lessonId) {
