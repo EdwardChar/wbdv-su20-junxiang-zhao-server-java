@@ -23,7 +23,7 @@ public class Widget {
     private int height;
     private String cssClass;
     private String style;
-    private String value;
+    private String value = "ol";
 
     public String getCssClass() {
         return cssClass;
